@@ -1,0 +1,419 @@
+/* debug tool */
+/* .dev *,
+.dev {
+  border: 1px solid rgba(143, 188, 143, 0.1);
+} */
+
+/* general parts */
+* {
+  font-family: "Ubuntu", sans-serif;
+  color: #171738;
+  list-style: disc inside;
+}
+
+body {
+  background-color: #c0c6c9;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+
+.gridlayout {
+  margin: 7% 5%;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  background-color: #f2f4f5;
+  box-shadow: 0 0 10px 1px rgba(23, 23, 56, 0.3);
+}
+
+.resume-name,
+.contact {
+  grid-column: span 2;
+}
+
+/* resume-name and contact section */
+.resume-name h1 {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.contact__avatar {
+  display: flex;
+  align-items: center;
+  flex-direction: column-reverse;
+  position: absolute;
+}
+
+.photo-shade {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  right: 15%;
+  border-radius: 50%;
+  background-color: rgba(247, 92, 3, 0.6);
+  padding: 10px;
+  transition: all 0.4s 0.4s;
+  border: 1px solid transparent;
+}
+/* for js toggle style on photo-shade */
+.clearShade {
+  background-color: transparent;
+}
+
+.hidePhoto {
+  text-align: center;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  right: 8%;
+  bottom: 8%;
+  border: 1px solid transparent;
+  padding: 10px;
+  opacity: 0;
+  transition: all 0.5s 0.5s;
+}
+/* for js toggle style on img */
+.showPhoto {
+  opacity: 1;
+  border-color: #eae151;
+}
+
+.contact__avatar figcaption {
+  padding: 5px;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: #eae151;
+  opacity: 0.2;
+  position: absolute;
+  right: 28%;
+  top: 40%;
+  cursor: pointer;
+  transition: all 0.3s 0.3s;
+}
+.contact__avatar figcaption:hover {
+  opacity: 1;
+  box-shadow: 5px 10px 2px 1px rgba(247, 92, 3, 1);
+}
+/* for js toggle style on figcaption */
+.captionHide {
+  visibility: hidden;
+}
+
+.contact__media-link {
+  text-align: center;
+  margin: 0 auto;
+  padding: 3% 0;
+  padding-left: 45%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid #eae151;
+  border-bottom: 1px solid #ddd92a;
+}
+.contact__media-link > a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  border-radius: 3px;
+  opacity: 0.6;
+  transition: all 0.3s 0.3s;
+}
+.contact__media-link > a:hover {
+  transform: scale(1.3, 1.3);
+  opacity: 1;
+}
+
+.contact__media-link a:last-child {
+  margin-right: 3rem;
+  line-height: 2rem;
+  color: #13ab67;
+}
+
+/* left-side section */
+.left-side {
+  background-color: #2274a5;
+  padding: 4rem 1rem 0;
+}
+
+.left-side h2 {
+  opacity: 0.3;
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.left-side__certificates,
+.physicals__education,
+.physicals__experience {
+  margin-bottom: 1.5rem;
+  line-height: 1.5rem;
+}
+
+/* right-side section */
+.right-side {
+  padding: 2rem 3%;
+}
+
+.right-side h2 {
+  margin-bottom: 2%;
+}
+
+.right-side h2:not(:first-child) {
+  margin-top: 5%;
+}
+
+.right-side__skills h3 {
+  margin: 1rem;
+}
+
+.intro__introduction {
+  margin: 0 5%;
+  line-height: 1.5rem;
+  text-indent: 2rem;
+}
+
+/* skills fronend and backend section */
+.skills__frontend {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 5%;
+}
+.frontend__list {
+  line-height: 1.5rem;
+  width: 40%;
+}
+.frontend__list h4 {
+  color: #f75c03;
+  border-bottom: 1px solid #2274a5;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.frontend__list:not(:nth-child(2n)) {
+  margin-right: calc(20% / 2);
+}
+
+.skills__backend {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 5%;
+}
+.backend__list {
+  margin-bottom: 10px;
+  line-height: 1.5rem;
+  width: 40%;
+}
+
+.backend__list h4 {
+  color: #f75c03;
+  border-bottom: 1px solid #2274a5;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.backend__list:not(:nth-child(2n)) {
+  margin-right: calc(20% / 2);
+}
+
+/* portfolio section */
+.right-side__portfolios {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 5%;
+}
+
+.portfolios__project {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  transition: all 0.4s 0.4s;
+  border-radius: 10px;
+  width: 40%;
+  text-align: center;
+}
+.portfolios__project:hover {
+  background-color: #c0c6c9;
+  box-shadow: 0 0 5px 3px rgba(234, 225, 81, 0.6);
+  transform: scale(1.2, 1.2);
+}
+
+.portfolios__project:not(:nth-child(2n)) {
+  margin-right: calc(20% / 2);
+}
+
+.portfolios__project h3 {
+  text-align: center;
+  margin: 10px 0;
+  color: #2274a5;
+}
+
+.intro__toggle-btn {
+  margin: 1rem auto 0;
+  color: #f75c03;
+  border: 1px solid #f75c03;
+  background-color: transparent;
+  border-radius: 3px;
+  transition: all 0.2s 0.2s;
+}
+.intro__toggle-btn:hover {
+  color: #f2f4f5;
+  border-color: #f2f4f5;
+}
+
+.project__intro p {
+  text-align: start;
+  margin: 4% 10%;
+}
+.showIntro {
+  transition: opacity 0.3s 0.3s;
+  opacity: 1;
+}
+.hideIntro {
+  transition: opacity 0.3s 0.3s;
+  opacity: 0;
+  font-size: 1px;
+  color: #c0c6c9;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.portfolios__project img {
+  width: 100%;
+  height: auto;
+}
+
+/* RWD - wide screen */
+@media screen and (min-width: 1200px) {
+  .gridlayout {
+    margin: 7% 15%;
+  }
+  .left-side {
+    padding: 4rem 2rem 0;
+  }
+  .photo-shade {
+    right: 0;
+    left: 15%;
+  }
+  .contact__avatar figcaption {
+    right: 0;
+    left: 25%;
+  }
+}
+
+/* RWD - mobile */
+@media (max-width: 839px) {
+  .gridlayout {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .contact {
+    flex-direction: column;
+  }
+  .contact__avatar {
+    position: relative;
+  }
+  .photo-shade {
+    right: 0;
+  }
+  .contact__avatar figcaption {
+    right: 12%;
+  }
+  .contact__media-link {
+    padding-left: 0;
+    justify-content: space-around;
+  }
+  .contact__media-link > a,
+  .contact__media-link > a:last-child {
+    margin: 0;
+  }
+
+  .left-side {
+    padding-top: 2rem;
+    order: 1;
+    /* specify the order of flex */
+  }
+
+  .left-side h2 {
+    text-align: start;
+  }
+
+  .frontend__list,
+  .backend__list,
+  .portfolios__project {
+    width: 80%;
+    margin: 0 auto 1.5rem;
+  }
+  .portfolios__project:hover {
+    transform: none;
+  }
+}
+
+/* for printer setting */
+@media print {
+  .gridlayout {
+    box-shadow: none;
+  }
+  .right-side__portfolios {
+    display: block;
+  }
+  .portfolios__project img {
+    margin-bottom: 1.5rem;
+  }
+  .portfolios__project p {
+    margin: 0 auto;
+  }
+  .hideIntro {
+    font-size: 1.3rem;
+    color: inherit;
+    overflow: initial;
+    white-space: initial;
+    text-overflow: initial;
+    display: initial;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+  }
+  .left-side {
+    margin-top: 50%;
+  }
+
+  .ignoreContent {
+    display: none;
+  }
+  .noBreak {
+    break-inside: left;
+  }
+  .breakPageAfter {
+    break-after: page;
+  }
+  .breakPageBefore {
+    break-before: page;
+  }
+
+  .showInPrint {
+    opacity: 1;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 5% 10%;
+}
