@@ -63,6 +63,7 @@ h3 {
   transition: all 0.4s 0.4s;
   border: 1px solid transparent;
 }
+
 /* for js toggle style on photo-shade */
 .clearShade {
   background-color: transparent;
@@ -99,6 +100,13 @@ h3 {
   cursor: pointer;
   transition: all 0.3s 0.3s;
 }
+
+.avatar__photo {
+  background-image: url("https://i.imgur.com/YYCe8GB.jpg?1");
+  background-position: center center;
+  background-size: 80%;
+}
+
 .contact__avatar figcaption:hover {
   opacity: 1;
   box-shadow: 5px 10px 2px 1px rgba(247, 92, 3, 1);

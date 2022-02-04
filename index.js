@@ -4,13 +4,13 @@ const projects = document.getElementsByClassName("right-side__portfolios")[0];
 
 // change effect functions
 function photoShowToggle(e) {
-  const triggerElements = ["figcaption", "img", "div"];
+  const triggerElements = ["figcaption", "p", "div"];
   const { localName } = e.target;
   if (triggerElements.indexOf(localName) > -1) {
-    const [figcaption, img, div] = triggerElements;
+    const [figcaption, p, div] = triggerElements;
     photo.querySelector(figcaption).classList.toggle("captionHide");
     photo.querySelector(div).classList.toggle("clearShade");
-    photo.querySelector(img).classList.toggle("showPhoto");
+    photo.querySelector(p).classList.toggle("showPhoto");
   }
 }
 
